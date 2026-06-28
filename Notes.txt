@@ -125,3 +125,17 @@ then in terminal
 
     npm run start:dev auth-service
 
+-----------------------
+Setup Shared Library
+----------------------
+
+nest g lib common
+
+you could see "libs' folder being created
+
+- create 
+folders there constants, dto, interfaces, utils
+
+inside constants, we create a file and use for variable naming and port assignments
+
+- next we create interface
