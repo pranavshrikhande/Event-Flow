@@ -96,3 +96,32 @@ Api Gateway
     - Now kafka makes event available to any consumer that is interested in it
     - Example Notification service, it will be consumer that subscribes to that topic 
     - Notification service can then pass it to email provider
+
+-------------------------------
+Project Setup
+-------------------------------
+
+npm i -g @nestjs/cli
+
+nest new .
+
+https://docs.nestjs.com/cli/monorepo
+
+monorepo mode: this mode treats code artifacts as part of a lightweight monorepo, and may be more appropriate for teams of developers and/or multi-project environments.
+It automates parts of the build process to make it easy to create and compose modular components,
+
+- Now to generate app i.e bunch of monorepo
+     1. auth-service 
+
+     nest g app auth-service 
+    
+what it does is, it creates "app" folder and inside it you can find boiler-plate for auth-service 
+
+- refactor event-flow to "api-gateway" everywhere
+
+then in terminal
+
+    npm run start:dev api-gateway
+
+    npm run start:dev auth-service
+
