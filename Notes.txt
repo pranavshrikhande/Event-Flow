@@ -3,3 +3,96 @@ Apache Kafka:
 
 - distribited event streaming platform
 - message queue, sits between services and lets them commuinicate, without talking to each other
+
+Kafka core concepts
+----------------------
+
+    - Producers:
+        Service that sends message
+    
+    - Consumer:
+        Service that recevies messages
+    
+    - Topic:
+        Named channel for messages
+    
+    - Message:
+        the actual data (usually JSON)
+    
+    - Broker:   
+        Kafka server that stores messages 
+
+HTTP vs Kafka
+----------------
+
+Why not use Http instead?
+kafka gives you decoupling, so services dont need to know about each other 
+
+HTTP way
+     
+        Email
+     /
+Auth/
+    \
+     \ Analytics
+
+
+
+- If service is down, it gets message, once its up, as those messages are in kafka 
+
+
+Kafka                      / Email
+            Auth -->Topic/
+                         \
+                          \ Analytics
+
+
+
+also multiple instances can consume from same Topic
+
+---------------
+UML Diagram
+---------------
+
+
+
+                Client/Front-end
+                    |
+                    |
+                    v
+                Api Gateway
+                    |
+                    |
+                    v                                                  |--------| 
+    -----------------------------------------------------------        | Kafka  |
+    Auth.      Events          Tickets     Notification Service        ---------- 
+                
+
+
+                |---|                            |-----|                           
+                |DB |                            |Redis|
+                -----                            --------   
+                                                                      
+                
+Redis for rate limiting and caching
+
+
+
+Client
+------
+    - NextJS
+
+Api Gateway
+---------------
+    - check related rout 
+
+- Auth Service 
+------------------
+    - gets email, pwd
+    - validate
+    - hash password using bcrypt
+    - create user record and save it to DB
+    - also creates user registered events and publish to kafka 
+    - Now kafka makes event available to any consumer that is interested in it
+    - Example Notification service, it will be consumer that subscribes to that topic 
+    - Notification service can then pass it to email provider
