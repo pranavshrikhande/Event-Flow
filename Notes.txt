@@ -1,0 +1,5 @@
+Apache Kafka:
+----------------
+
+- distribited event streaming platform
+- message queue, sits between services and lets them commuinicate, without talking to each other
