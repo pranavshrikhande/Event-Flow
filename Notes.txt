@@ -139,3 +139,65 @@ folders there constants, dto, interfaces, utils
 inside constants, we create a file and use for variable naming and port assignments
 
 - next we create interface
+
+-----------------------
+Kafka Configuration
+-----------------------
+
+https://docs.nestjs.com/microservices/kafka
+
+
+ npm i --save @nestjs/microservices
+
+ npm i --save kafkajs
+
+
+ - Just like we did for common Library, we will do that for kafka as well 
+ 
+
+ nest g lib kafka
+
+ - We define kafka constants
+
+
+
+Now we run this kafka in Docker
+
+docker-compose.yaml
+
+we configured on port:9093:9092
+
+```
+docker compose up -d zookeeper kafka kafka-ui
+```
+
+to check if they are running
+
+```
+docker ps 
+```
+
+now to test, make changes in auth-service-controller and auth-service.service.ts
+
+- now to start services
+
+- Kafka broker is running in 9093
+
+```
+npm run start:dev auth-service
+```
+
+you can goto http://localhost:8080/ for kafka UI 
+>consumers and you can see groupId added successfully
+
+Now to truly test if it emits the event that we have added, we need to hit the endpoint
+
+```
+curl -X POST http://localhost:3000/register -H "Content-Type: application/json" -d '{"email": "test@example.com"}'
+```
+
+you get 
+{"message":"User registered: test@example.com"}%   
+
+
+in kafka UI goto topics, you could see user.registered
