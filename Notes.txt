@@ -201,3 +201,63 @@ you get
 
 
 in kafka UI goto topics, you could see user.registered
+
+-------------------------
+Database Configuration
+--------------------------
+
+npm i drizzle-orm pg 
+npm i drizzle-kit @types/pg -D 
+nest g lib database 
+
+next we create our database schema
+
+
+database.service.ts
+----------------------
+
+Application Starts
+        │
+        ▼
+DatabaseService Constructor
+        │
+        ▼
+Read DATABASE_URL
+        │
+        ▼
+Create pg Pool
+        │
+        ▼
+Create Drizzle ORM
+        │
+        ▼
+Expose db to NestJS services
+        │
+        ▼
+Other Services
+        │
+        ▼
+databaseService.db.select(...)
+databaseService.db.insert(...)
+databaseService.db.update(...)
+        │
+        ▼
+Application Stops
+        │
+        ▼
+onModuleDestroy()
+        │
+        ▼
+pool.end()
+
+
+```
+docker compose up -d postgres
+```
+
+once postgres is up and running, we need to push the code schemas, that we just created, if our db is running
+
+```
+npx drizzle-kit push 
+```
+
