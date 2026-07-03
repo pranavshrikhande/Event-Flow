@@ -1,7 +1,6 @@
 export * from './common.module';
 export * from './common.service';
 
-
 //constants
 export * from './constants';
 
@@ -10,7 +9,6 @@ export * from './interfaces';
 
 //Utils
 export * from './utils';
-
 
 //DTO's
 export * from './dto';

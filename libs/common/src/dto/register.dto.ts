@@ -1,5 +1,5 @@
-export class RegisterDTO{
-    email!: string;
-    password!: string;
-    name!: string;
+export class RegisterDTO {
+  email!: string;
+  password!: string;
+  name!: string;
 }

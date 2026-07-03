@@ -1,8 +1,8 @@
-import { pgTable } from "drizzle-orm/pg-core";
-import { uuid, varchar, timestamp, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable } from 'drizzle-orm/pg-core';
+import { uuid, varchar, timestamp, pgEnum } from 'drizzle-orm/pg-core';
 
 //Enum
-export const roleEnum = pgEnum('role', ['USER','ORGANIZER','ADMIN']);
+export const roleEnum = pgEnum('role', ['USER', 'ORGANIZER', 'ADMIN']);
 
 //Users tables
 export const users = pgTable('users', {
@@ -15,4 +15,4 @@ export const users = pgTable('users', {
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 export type IUser = typeof users.$inferSelect;
-export type NewUser = typeof users.$inferInsert
+export type NewUser = typeof users.$inferInsert;
