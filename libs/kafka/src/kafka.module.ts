@@ -9,7 +9,6 @@ import {
 export const KAFKA_SERVICE = 'KAFKA_SERVICE';
 
 @Module({})
-
 export class KafkaModule {
   static register(consumerGroup?: string): DynamicModule {
     return {
