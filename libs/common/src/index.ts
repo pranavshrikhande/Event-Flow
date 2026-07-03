@@ -10,3 +10,7 @@ export * from './interfaces';
 
 //Utils
 export * from './utils';
+
+
+//DTO's
+export * from './dto';
